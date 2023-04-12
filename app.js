@@ -19,6 +19,7 @@ var selectorRouter = require('./routes/selector');
 var app = express();
 
 var resourceRouter = require('./routes/resource');
+var costumesRouter = require('./routes/costumes');
 
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
@@ -37,6 +38,8 @@ app.use('/users', usersRouter);
 app.use('/hats', hatsRouter);
 app.use('/board', boardRouter);
 app.use('/selector', selectorRouter);
+
+app.use('/costumes', costumesRouter);
 
 app.use('/resource', resourceRouter);
 

@@ -1,0 +1,15 @@
+extends layout
+
+block content
+  h1= title
+  each costume in results
+    div
+      strong Costume Type:
+      span= costume.costume_type
+    div
+      strong Size:
+      span= costume.size
+    div
+      strong Cost:
+      span= costume.cost
+    hr
