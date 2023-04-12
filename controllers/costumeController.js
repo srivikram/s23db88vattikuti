@@ -29,3 +29,20 @@ exports.costume_update_put = function (req, res) {
     // TODO: Implement logic for updating a specific costume by ID
     res.send('NOT IMPLEMENTED: Costume update PUT' + req.params.id);
 };
+
+// List of all Costumes
+exports.costume_list = async function (req, res) {
+    try {
+        // Use the `await` keyword to wait for the MongoDB query to complete
+        // and retrieve all documents from the "Costume" collection using the Mongoose model "Costume"
+        const theCostumes = await Costume.find();
+
+        // Send the retrieved documents as a JSON response
+        res.send(theCostumes);
+    } catch (err) {
+        // If an error occurs, set the response status to 500 (Internal Server Error)
+        // and send an error message as JSON
+        res.status(500);
+        res.send(`{"error": ${err}}`);
+    }
+};

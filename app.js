@@ -74,13 +74,25 @@ async function recreateDB() {
   try {
     // Delete everything
     await Costume.deleteMany();
-    let instance1 = new Costume({
-      costume_type: "Jack&Jones",
-      size: 'small',
-      cost: 30.03
-    });
-    await instance1.save();
-    console.log("First object saved");
+    const costumesList = [
+      {
+        costume_type: "Jack&Jones",
+        size: 'small',
+        cost: 30.03
+      },
+      {
+        costume_type: "gap",
+        size: 'medium',
+        cost: 13.03
+      },
+      {
+        costume_type: "ua",
+        size: 'large',
+        cost: 23
+      }
+    ];
+    await Costume.insertMany(costumesList);
+    console.log("Costumes recreated successfully!");
   } catch (error) {
     console.error(error);
   }
