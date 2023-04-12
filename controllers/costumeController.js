@@ -23,9 +23,9 @@ exports.costume_create_post = async function (req, res) {
     let document = new Costume();
 
     // Set the properties of the new Costume object based on the request body
-    document.costume_type = req.body.costume_type;
-    document.cost = req.body.cost;
-    document.size = req.body.size;
+    document.hat_type = req.body.hat_type;
+    document.color = req.body.color;
+    document.price = req.body.price;
 
     try {
         let result = await document.save();

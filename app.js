@@ -79,19 +79,19 @@ async function recreateDB() {
     await Costume.deleteMany();
     const costumesList = [
       {
-        costume_type: "Jack&Jones",
-        size: 'small',
-        cost: 30.03
+        hat_type: "Baseball Cap", 
+        color: 'Red', 
+        price: 12.99
       },
       {
-        costume_type: "gap",
-        size: 'medium',
-        cost: 13.03
+        hat_type: "Fedora", 
+        color: 'Black', 
+        price: 29.99
       },
       {
-        costume_type: "ua",
-        size: 'large',
-        cost: 23
+        hat_type: "Beanie", 
+        color: 'Blue', 
+        price: 9.99
       }
     ];
     await Costume.insertMany(costumesList);
