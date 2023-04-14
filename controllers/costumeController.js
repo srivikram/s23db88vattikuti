@@ -12,9 +12,14 @@ exports.costume_list = async function (req, res) {
 };
 
 // Controller for retrieving details of a specific costume by ID
-exports.costume_detail = function (req, res) {
-    // TODO: Implement logic for retrieving details of a specific costume by ID
-    res.send('NOT IMPLEMENTED: Costume detail: ' + req.params.id);
+exports.costume_detail = async function (req, res) {    
+    try {
+        result = await Costume.findById(req.params.id)
+        res.send(result)
+    } catch (error) {
+        res.status(500)
+        res.send(`{"error": document for id ${req.params.id} not found`);
+    }
 };
 
 // Controller for creating a new costume

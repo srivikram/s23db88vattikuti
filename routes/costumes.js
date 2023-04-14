@@ -7,7 +7,7 @@ const Costume = require('../models/costume'); // Import the Costume model
 router.get('/', async function (req, res, next) {
     try {
         const theCostumes = await Costume.find();
-        res.render('costumes', { title: 'Costume Search Results', results: theCostumes });
+        res.render('costumes', { title: 'Hats Search Results', results: theCostumes });
     }
     catch (err) {
         next(err); // Pass the error to the error handler middleware
