@@ -12,7 +12,7 @@ exports.costume_list = async function (req, res) {
 };
 
 // Controller for retrieving details of a specific costume by ID
-exports.costume_detail = async function (req, res) {    
+exports.costume_detail = async function (req, res) {
     try {
         result = await Costume.findById(req.params.id)
         res.send(result)
@@ -48,7 +48,21 @@ exports.costume_delete = function (req, res) {
 };
 
 // Controller for updating a specific costume by ID
-exports.costume_update_put = function (req, res) {
-    // TODO: Implement logic for updating a specific costume by ID
-    res.send('NOT IMPLEMENTED: Costume update PUT' + req.params.id);
+exports.costume_update_put = async function (req, res) {
+    console.log(`update on id ${req.params.id} with body
+   ${JSON.stringify(req.body)}`)
+    try {
+        let toUpdate = await Costume.findById(req.params.id)
+        // Do updates of properties
+        if (req.body.hat_type) toUpdate.hat_type = req.body.hat_type;
+        if (req.body.color) toUpdate.color = req.body.color;
+        if (req.body.price) toUpdate.price = req.body.price;
+        let result = await toUpdate.save();
+        console.log("Sucess " + result)
+        res.send(result)
+    } catch (err) {
+        res.status(500)
+        res.send(`{"error": ${err}: Update for id ${req.params.id}
+   failed`);
+    }
 };
