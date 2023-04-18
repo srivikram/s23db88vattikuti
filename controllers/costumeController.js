@@ -42,9 +42,16 @@ exports.costume_create_post = async function (req, res) {
 };
 
 // Controller for deleting a specific costume by ID
-exports.costume_delete = function (req, res) {
-    // TODO: Implement logic for deleting a specific costume by ID
-    res.send('NOT IMPLEMENTED: Costume delete DELETE ' + req.params.id);
+exports.costume_delete = async function (req, res) {
+    console.log("delete " + req.params.id)
+    try {
+        result = await Costume.findByIdAndDelete(req.params.id)
+        console.log("Removed " + result)
+        res.send(result)
+    } catch (err) {
+        res.status(500)
+        res.send(`{"error": Error deleting ${err}}`);
+    }
 };
 
 // Controller for updating a specific costume by ID
