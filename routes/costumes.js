@@ -2,16 +2,12 @@ const express = require('express');
 const router = express.Router();
 
 const Costume = require('../models/costume'); // Import the Costume model
+const costume_controlers = require('../controllers/costumeController');
 
-// Middleware function for handling costume view all page
-router.get('/', async function (req, res, next) {
-    try {
-        const theCostumes = await Costume.find();
-        res.render('costumes', { title: 'Hats Search Results', results: theCostumes });
-    }
-    catch (err) {
-        next(err); // Pass the error to the error handler middleware
-    }
-});
+/* GET home page. */
+//router.get('/', costumeController.handbags_view_all_Page);
+
+/* GET detail handbags page */
+router.get('/detail', costume_controlers.costume_view_one_Page);
 
 module.exports = router;

@@ -20,6 +20,7 @@ var app = express();
 
 var resourceRouter = require('./routes/resource');
 var costumesRouter = require('./routes/costumes');
+var costumesDetailRouter = require('./routes/detail');
 
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
@@ -42,6 +43,8 @@ app.use('/selector', selectorRouter);
 app.use('/costumes', costumesRouter);
 
 app.use('/resource', resourceRouter);
+
+app.use('/resource', costumesDetailRouter);
 
 // catch 404 and forward to error handler
 app.use(function (req, res, next) {
@@ -79,18 +82,18 @@ async function recreateDB() {
     await Costume.deleteMany();
     const costumesList = [
       {
-        hat_type: "Baseball Cap", 
-        color: 'Red', 
+        hat_type: "Baseball Cap",
+        color: 'Red',
         price: 12.99
       },
       {
-        hat_type: "Fedora", 
-        color: 'Black', 
+        hat_type: "Fedora",
+        color: 'Black',
         price: 29.99
       },
       {
-        hat_type: "Beanie", 
-        color: 'Blue', 
+        hat_type: "Beanie",
+        color: 'Blue',
         price: 9.99
       }
     ];
