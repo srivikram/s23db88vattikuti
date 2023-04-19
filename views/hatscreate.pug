@@ -3,20 +3,20 @@ extends layout
 block content
     h1= title
 
-    form(id='CostumeForm' action="/resource/costumes" method="POST")
+    form(id='HatForm' action="/resource/costumes" method="POST")
         div.form-group
-            label.costumeAttr(for='hat_type') Hat type
+            label.hatsAttr(for='hat_type') Hat type
             input#hat_type(type='text' name='hat_type')
         div.form-group
-            label.costumeAttr(for='color') Hat Color
+            label.hatsAttr(for='color') Hat Color
             input#color(type='text' name='color')
         div.form-group
-            label.costumeAttr(for='price') Hat Price
+            label.hatsAttr(for='price') Hat Price
             input#price(type='number' name='price')
         input(type="submit")
 
         script.
-            document.forms['CostumeForm'].addEventListener('submit', (event) => {
+            document.forms['HatForm'].addEventListener('submit', (event) => {
                 event.preventDefault();
                 // TODO do something here to show user that form is being submitted
                 fetch(event.target.action, {
@@ -32,3 +32,51 @@ block content
                     alert("Save failed " + error )
                 });
             });
+
+    style.
+        /* Set a max-width for the form and center it on the page */
+        form#HatForm {
+            max-width: 500px;
+            margin: 0 auto;
+        }
+
+        /* Style the form labels */
+        label.hatsAttr {
+            display: block;
+            margin-bottom: 10px;
+        }
+
+        /* Style the form inputs */
+        input[type="text"],
+        input[type="number"] {
+            width: 100%;
+            padding: 10px;
+            border-radius: 4px;
+            border: 1px solid #ccc;
+            box-sizing: border-box;
+            margin-bottom: 20px;
+        }
+
+        /* Style the submit button */
+        input[type="submit"] {
+            background-color: #4CAF50;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+
+        /* Add a hover effect to the submit button */
+        input[type="submit"]:hover {
+            background-color: #3e8e41;
+        }
+
+        /* Add a red border to input fields that have errors */
+        input.error {
+            border-color: red;
+        }
+
+        h1 {
+            text-align: center;
+        }
