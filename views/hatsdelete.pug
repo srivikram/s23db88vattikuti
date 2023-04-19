@@ -10,42 +10,100 @@ block content
         - let Color = toShow.color
         - let Price = toShow.price
         - let actionid = "/resource/costumes/" + hatsid 
+        style.
+            .container {
+                max-width: 600px;
+                margin: 0 auto;
+                padding: 20px;
+                background-color: #fff;
+                border-radius: 10px;
+                box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+            }
+            .hatsAttr {
+                font-weight: bold;
+                margin-bottom: 5px;
+            }
+            .row {
+                display: flex;
+                flex-direction: row;
+                align-items: center;
+                justify-content: space-between;
+                margin-bottom: 10px;
+            }
+            .col {
+                flex: 1;
+            }
+            .label-col {
+                flex: 2;
+            }
+            .delete-button {
+                background-color: #dc3545;
+                border-color: #dc3545;
+                margin: 0 auto;
+                display: block;
+                width: 150px;
+                font-size: 1.2rem;
+            }
+            .delete-button:hover {
+                background-color: #c82333;
+                border-color: #bd2130;
+            }
+            .cancel-button {
+                background-color: #6c757d;
+                border-color: #6c757d;
+                margin: 0 auto;
+                display: block;
+                width: 150px;
+                font-size: 1.2rem;
+            }
+            .cancel-button:hover {
+                background-color: #5a6268;
+                border-color: #545b62;
+            }
+            .button-group {
+                display: flex;
+                justify-content: center;
+            }
+            h1 {
+                text-align: center;
+            }
         script. 
             actionid = "#{actionid}" 
-        div 
-            div.row 
-                div(class='hatsAttr mr-3') Hats ID is: 
-                div #{hatsid}            
-            div.row 
-                div(class='hatsAttr mr-3') Hat Type is: 
-                div #{HatType} 
-            div.row 
-                div(class='hatsAttr mr-3') Hat Color is: 
-                div #{Color} 
-            div.row 
-                div(class='hatsAttr mr-3') Hat Price is: 
-                div #{Price} 
+        div(class="container")
+            div 
+                div.row 
+                    div(class='hatsAttr mr-3') Hats ID is: 
+                    div #{hatsid}            
+                div.row 
+                    div(class='hatsAttr mr-3') Hat Type is: 
+                    div #{HatType} 
+                div.row 
+                    div(class='hatsAttr mr-3') Hat Color is: 
+                    div #{Color} 
+                div.row 
+                    div(class='hatsAttr mr-3') Hat Price is: 
+                    div #{Price} 
 
-        script. 
-            function deleteOnid() { 
-                console.log("starting delete") 
-                // delete first 
-                fetch(actionid, { 
-                    method: 'DELETE'  
-                }).then((resp) => { 
-                    return resp.json(); // or resp.text() or whatever the server sends 
-                }).then((body) => { 
-                    alert("Delete succeeded") 
-                    window.location.href='/resource/costumes' 
-                    // TODO handle body 
-                }).catch((error) => { 
-                    // TODO handle error 
-                    alert("Delete failed " + error ) 
-                }); 
-            } 
+            script. 
+                function deleteOnid() { 
+                    console.log("starting delete") 
+                    // delete first 
+                    fetch(actionid, { 
+                        method: 'DELETE'  
+                    }).then((resp) => { 
+                        return resp.json(); // or resp.text() or whatever the server sends 
+                    }).then((body) => { 
+                        alert("Delete succeeded") 
+                        window.location.href='/resource/costumes' 
+                        // TODO handle body 
+                    }).catch((error) => { 
+                        // TODO handle error 
+                        alert("Delete failed " + error ) 
+                    }); 
+                } 
 
-        button(class="btn btn-danger m-2" onclick="deleteOnid()") Delete 
-        button(class="btn btn-secondary m-2" onclick="cancel()") Cancel 
+            button(class="btn btn-danger m-2 delete-button" onclick="deleteOnid()") Delete 
+            button(class="btn btn-secondary m-2 cancel-button" onclick="cancel()") Cancel 
 
     script. 
         function cancel() { 
