@@ -1,0 +1,54 @@
+extends layout 
+
+block content 
+    h1= title 
+    if (toShow == null) 
+        h2 No instance to delete 
+    else 
+        - let hatsid = toShow._id 
+        - let HatType = toShow.hat_type 
+        - let Color = toShow.color
+        - let Price = toShow.price
+        - let actionid = "/resource/costumes/" + hatsid 
+        script. 
+            actionid = "#{actionid}" 
+        div 
+            div.row 
+                div(class='hatsAttr mr-3') Hats ID is: 
+                div #{hatsid}            
+            div.row 
+                div(class='hatsAttr mr-3') Hat Type is: 
+                div #{HatType} 
+            div.row 
+                div(class='hatsAttr mr-3') Hat Color is: 
+                div #{Color} 
+            div.row 
+                div(class='hatsAttr mr-3') Hat Price is: 
+                div #{Price} 
+
+        script. 
+            function deleteOnid() { 
+                console.log("starting delete") 
+                // delete first 
+                fetch(actionid, { 
+                    method: 'DELETE'  
+                }).then((resp) => { 
+                    return resp.json(); // or resp.text() or whatever the server sends 
+                }).then((body) => { 
+                    alert("Delete succeeded") 
+                    window.location.href='/resource/costumes' 
+                    // TODO handle body 
+                }).catch((error) => { 
+                    // TODO handle error 
+                    alert("Delete failed " + error ) 
+                }); 
+            } 
+
+        button(class="btn btn-danger m-2" onclick="deleteOnid()") Delete 
+        button(class="btn btn-secondary m-2" onclick="cancel()") Cancel 
+
+    script. 
+        function cancel() { 
+            // Go back to the home page for the handbags collection 
+            window.location.href='/resource/costumes' 
+        }

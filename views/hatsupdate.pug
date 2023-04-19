@@ -16,13 +16,13 @@ block content
         - let actionid = "/resource/costumes/" + hatsid 
         form(id='hatsForm', action= actionid, method="PUT") 
             div.form-group 
-                label.handbagsAttr(for='hat_type') Hat Type
+                label.hatsAttr(for='hat_type') Hat Type
                 input#hat_type(type='text' name='hat_type', value= hat_type ) 
             div.form-group 
-                label.handbagsAttr(for='color') Hat color 
+                label.hatsAttr(for='color') Hat color 
                 input#color(type='text' name='color', value= color ) 
             div.form-group 
-                label.handbagsAttr(for='price') Hat price 
+                label.hatsAttr(for='price') Hat price 
                 input#price(type='number' name='price', value= price ) 
             input(type="submit") 
 
