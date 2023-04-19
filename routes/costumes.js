@@ -10,4 +10,7 @@ const costume_controlers = require('../controllers/costumeController');
 /* GET detail handbags page */
 router.get('/detail', costume_controlers.costume_view_one_Page);
 
+/* GET create costume page */
+router.get('/create', costume_controlers.hats_create_Page);
+
 module.exports = router;
