@@ -1,20 +1,20 @@
 extends layout
 block content
     h1= title
-    - let costumeid = toShow._id
+    - let hatsid = toShow._id
     - let hat_type = toShow.hat_type
     - let color = toShow.color
     - let price = toShow.price
     div
     div.row
-    div(class='costumeAttr mr-3') Costume ID is:
-    div #{costumeid}
+    div(class='costumeAttr mr-3') Hat ID is:
+    div #{hatsid}
     div.row
     div(class='costumeAttr mr-3') Hat Type is:
     div #{hat_type}
     div.row
-    div(class='costumeAttr mr-3') Costume Color is:
+    div(class='costumeAttr mr-3') Hat Color is:
     div #{color}
     div.row
-    div(class='costumeAttr mr-3') Costume price is:
+    div(class='costumeAttr mr-3') Hat price is:
     div #{price}
