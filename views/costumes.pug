@@ -2,14 +2,19 @@ extends layout
 
 block content
   h1= title
-  each costume in results
-    div
-      strong Hat Type:
-      span= costume.hat_type
-    div
-      strong Color:
-      span= costume.color
-    div
-      strong price:
-      span= costume.price
-    hr
+  - let costumes = results
+  div(class="container-fluid")
+    div(class="row")
+      each item,index in costumes
+        - let destination = `dispatch(\"/costumes/update?id=${item._id}\")`
+        div(class="col-sm-2" class="m-1" style="background-color: #f8f9fa; padding: 10px;")
+          h3(style="color: #007bff;") #{item.hat_type}
+          p #{item.color}
+          p #{item.price}
+          button.btn( class="btn-primary ml-1", onclick= destination, style="background-color: #007bff; border: none;") Update
+  script.
+    function dispatch(path){
+      console.log(path);
+      window.location.href=path;
+    }
+

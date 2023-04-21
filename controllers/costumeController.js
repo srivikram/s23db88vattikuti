@@ -74,6 +74,17 @@ exports.costume_update_put = async function (req, res) {
     }
 };
 
+exports.costume_view_all_Page = async function (req, res) {
+    try {
+    thecostume = await Costume.find();
+    res.render('costumes', { title: 'Hats Results', results: thecostume });
+    }
+    catch (err) {
+    res.status(500);
+    res.send(`{"error": ${err}}`);
+    }
+}
+
 exports.costume_view_one_Page = async function (req, res) {
     console.log("single view for id " + req.query.id)
     try {
