@@ -25,7 +25,7 @@ require('dotenv').config();
 const connectionString = process.env.MONGO_CON;
 const mongoose = require('mongoose');
 
-mongoose.connect(connectionString, { useNewUrlParser: true, useUnifiedTopology: true, useCreateIndex: true });
+mongoose.connect(connectionString, { useNewUrlParser: true, useUnifiedTopology: true });
 
 var indexRouter = require('./routes/index');
 var usersRouter = require('./routes/users');
