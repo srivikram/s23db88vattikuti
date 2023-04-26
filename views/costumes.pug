@@ -2,16 +2,23 @@ extends layout
 
 block content
   h1= title
+  <br>
+    - let Create = `dispatch(\"/costumes/create\")`
+    button.btn( class="btn-primary ml-1", onclick= Create, style="background-color: #007bff; border: none;") Create
   - let costumes = results
   div(class="container-fluid")
     div(class="row")
       each item,index in costumes
+        - let details = `dispatch(\"/costumes/detail?id=${item._id}\")`
         - let destination = `dispatch(\"/costumes/update?id=${item._id}\")`
+        - let del = `dispatch(\"/costumes/delete?id=${item._id}\")`
         div(class="col-sm-2" class="m-1" style="background-color: #f8f9fa; padding: 10px;")
           h3(style="color: #007bff;") #{item.hat_type}
           p #{item.color}
           p #{item.price}
-          button.btn( class="btn-primary ml-1", onclick= destination, style="background-color: #007bff; border: none;") Update
+          button.btn( class="btn-primary ml-1", onclick= details, style="background-color: #007bff; border: none;") Details
+          button.btn( class="btn-primary ml-1", onclick= destination, style="background-color: #007bff; border: none; margin: 0 25px;") Update
+          button.btn( class="btn-primary ml-1", onclick= del, style="background-color: #007bff; border: none;") Delete
   script.
     function dispatch(path){
       console.log(path);
